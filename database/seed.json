@@ -1,0 +1,40 @@
+{
+    "contacts": {
+        "contact0": {
+            "name": "Terry Moore",
+            "address": "3 Paradise Cove",
+            "city": "San Antonio",
+            "state": "TX",
+            "zip": "45632",
+            "phone": "615-555-7771",
+            "job": "Artist"
+        },
+        "contact1": {
+            "name": "Jonathan Coulton",
+            "address": "3 Paradise Cove",
+            "city": "San Antonio",
+            "state": "TX",
+            "zip": "45632",
+            "phone": "615-555-9292",
+            "job": "Singer"
+        },
+        "contact2": {
+            "name": "Steve Womack",
+            "address": "3 Paradise Cove",
+            "city": "San Antonio",
+            "state": "TX",
+            "zip": "45632",
+            "phone": "615-555-5872",
+            "job": "Writer"
+        },
+        "contact3": {
+            "name": "Stephen Lackey",
+            "address": "3 Paradise Cove",
+            "city": "San Antonio",
+            "state": "TX",
+            "zip": "45632",
+            "phone": "615-555-4444",
+            "job": "Director"
+        }
+    }
+}

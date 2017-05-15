@@ -1,5 +1,18 @@
 html {
   background-color: #01FF70; }
 
-.contact-cards h3 {
-  color: blue; }
+.panel-heading {
+  width: 100%;
+  text-align: center; }
+
+.col-sm-4 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-left: 5px;
+  margin-right: 5px; }
+
+@media (min-width: 768px) {
+  .col-sm-4 {
+    width: 30%; } }
