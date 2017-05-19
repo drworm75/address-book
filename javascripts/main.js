@@ -1,20 +1,12 @@
-app.run((FIREBASE_CONFIG) => {
-  firebase.initializeApp(FIREBASE_CONFIG);
-});
-
-app.controller("NavCtrl", ($scope) => {
-	$scope.navItems = [{name: "Logout"}, {name: "Show All Contacts"}, {name: "Search Contacts"}, {name: "New Contact"}];
-});
-
 app.controller ("ContactCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
 	$scope.showContactView = true;
 	$scope.contacts = [];
-	$scope.newContact = (name) => {
-		console.log("name =", name);
-		if (name === "New Contact") {
+	$scope.newContact = (linkName) => {
+		console.log("linkName =", linkName);
+		if (linkName === "New Contact") {
 			$scope.showContactView =  false;
 		}
-		if (name === "Show All Contacts") {
+		else if (linkName === "Show All Contacts") {
 			$scope.showContactView =  true;
 
 		}
@@ -30,6 +22,7 @@ app.controller ("ContactCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
 				var contactCollection = fbItems.data;
 				Object.keys(contactCollection).forEach((key) => {
 					contactCollection[key].id=key;
+					console.log("id", contactCollection[key].id);
 					info.push(contactCollection[key]);
 				});
 				resolve(info);

@@ -11,92 +11,11 @@
 		
 
 </head>
-<body ng-app="AddressBook">
-	<div ng-controller="ContactCtrl">
-		<nav class="navbar navbar-default" ng-controller="NavCtrl">
-		  <div class="container-fluid">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
+	<body ng-app="AddressBook">
+		<div ng-include="'partials/navbar.html'"></div>
+		<div ng-view></div>
 
-		      <a class="navbar-brand" href="#">Address Book</a>
-		    </div>
-
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-			  <ul class="nav navbar-nav navbar-right" ng-repeat="thingy in navItems">
-			    <li><a href="#" ng-click="newContact(thingy.name)">{{thingy.name}}</a></li>
-			  </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-		</nav>
-	
-	<div ng-show="showContactView">
-		<div ng-repeat="keys in contacts">
-			<div class="panel panel-success col-sm-4">
-				<div class="panel-heading">
-					<!-- <div class="col-sm-3"> -->
-						<h3>{{keys.name}}</h3>
-				</div>
-						<ul class="list-group">
-							<li class="list-group-item">{{keys.address}}</li>
-						</ul>
-						<ul class="list-group">
-							<li class="list-group-item">{{keys.phone}}</li>
-						</ul>
-						<ul class="list-group">
-							<li class="list-group-item">{{keys.job}}</li>
-						</ul>
-					</div>
-				</div>
-			</div>			
-	
-
-	<div class="col-xs-8 col-xs-offset-2">
-		<div ng-show="!showContactView">
-			<h3>Add New Peeps</h3>
-			 <form>
-	            <div class="form-group">
-	                <label>Name</label>
-	                <input type="text" class="form-control" placeholder="John Doh"
-	                ng-model="newContact.name"/>
-	            </div>
-	            <div class="form-group">
-	                <label>Address</label>
-	                <input type="text" class="form-control" placeholder="742 Evergreen Ter"
-	                ng-model="newContact.address"/>
-	            </div>
-	            <div class="form-group">
-	                <label>City</label>
-	                <input type="text" class="form-control" placeholder="Springfield"
-	                ng-model="newContact.city"/>
-	            </div>
-	            <div class="form-group">
-	                <label>State</label>
-	                <input type="text" class="form-control" placeholder="AS"
-	                ng-model="newContact.state"/>
-	            </div>
-	            <div class="form-group">
-	                <label>Zip</label>
-	                <input type="text" class="form-control" placeholder="45302"
-	                ng-model="newContact.zip"/>
-	            </div>
-	            <div class="form-group">
-	                <label>Job</label>
-	                <input type="text" class="form-control" placeholder="Place Holder"
-	                ng-model="newContact.job"/>
-	            </div>
-	            <div class="form-group">
-	                <label>Phone</label>
-	                <input type="text" class="form-control" placeholder="615.867.5309"
-	                ng-model="newContact.phone"/>
-	            </div>
-
-	            <button class="btn btn-default" ng-click="addNewItem()">Submit</button>
-	        </form>
-		</div>
-	</div>
-	</div>
+		
 	
 	<!-- Third Party Script Tags -->
 
@@ -104,9 +23,17 @@
 	<script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
 	<script type="text/javascript" src="./lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.min.js"></script>
 	<!-- Personal Script Tags -->
 	<script type="text/javascript" src="./javascripts/app.js"></script>
+	<script type="text/javascript" src="./javascripts/AppConfig.js"></script>
 	<script type="text/javascript" src="./javascripts/AppConstants.js"></script>
-	<script type="text/javascript" src="./javascripts/main.js"></script>
+	<script type="text/javascript" src="./javascripts/factories/ContactFactory.js"></script>
+	<script type="text/javascript" src="./javascripts/controllers/NavCtrl.js"></script>
+	<script type="text/javascript" src="./javascripts/controllers/ContactEditCtrl.js"></script>
+	<script type="text/javascript" src="./javascripts/controllers/ContactListCtrl.js"></script>
+	<script type="text/javascript" src="./javascripts/controllers/ContactNewCtrl.js"></script>
+	<script type="text/javascript" src="./javascripts/controllers/ContactItemCtrl.js"></script>
 </body>
 </html>
+
