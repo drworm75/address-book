@@ -16,3 +16,19 @@ html {
 @media (min-width: 768px) {
   .col-sm-4 {
     width: 30%; } }
+
+.list-inline > li {
+  display: inline-block;
+  padding-right: 10px;
+  padding-left: 15px; }
+
+.list-inline {
+  padding-left: 0;
+  margin-left: 0px;
+  list-style: none; }
+
+li {
+  border: none; }
+
+.city-group {
+  border: none; }

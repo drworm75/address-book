@@ -1,16 +1,7 @@
 app.controller ("ContactCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
 	$scope.showContactView = true;
 	$scope.contacts = [];
-	$scope.newContact = (linkName) => {
-		console.log("linkName =", linkName);
-		if (linkName === "New Contact") {
-			$scope.showContactView =  false;
-		}
-		else if (linkName === "Show All Contacts") {
-			$scope.showContactView =  true;
-
-		}
-	};
+	
 
 
 
@@ -44,14 +35,6 @@ app.controller ("ContactCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
 
 	getContacts();
 
-	$scope.addNewContact = () => {
-	    postNewContact($scope.newContact).then(() => {
-			$scope.newContact = {};
-			$scope.showContactView =true;
-			getContacts();
-	    }).catch((error) => {
-			console.log("Add error", error);
-	    });
-	  };
+
 });
 

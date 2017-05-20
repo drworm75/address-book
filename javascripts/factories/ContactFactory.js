@@ -1,6 +1,8 @@
+//Don't forget to return functions that are in the factory!
 app.factory("ContactFactory", function($http, $q, FIREBASE_CONFIG) {
 	
 	let getContactList = () => {
+		console.log("getCpntactList is running");
 	    let info = [];
 	    return $q((resolve, reject) => {
         $http.get(`${FIREBASE_CONFIG.databaseURL}/contacts.json`)
@@ -20,62 +22,66 @@ app.factory("ContactFactory", function($http, $q, FIREBASE_CONFIG) {
 	    });
 	  };
 
- //  let getSingleItem = (id) => {
- //    return $q((resolve, reject) => {
- //      $http.get(`${FIREBASE_CONFIG.databaseURL}/items/${id}.json`)
- //      .then((resultz) => {
- //      	resultz.data.id = id;
- //          resolve(resultz);
- //      })
- //      .catch((error) => {
- //        reject(error);
- //      });
- //    });
- //  };
+  let getSingleContact = (id) => {
+    return $q((resolve, reject) => {
+      $http.get(`${FIREBASE_CONFIG.databaseURL}/contacts/${id}.json`)
+      .then((resultz) => {
+      	resultz.data.id = id;
+          resolve(resultz);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+    });
+  };
 
- //  let postNewItem = (newItem) => {
- //    return $q ((resolve, reject) => {
- //      $http.post(`${FIREBASE_CONFIG.databaseURL}/items.json`, JSON.stringify(newItem))
- //      .then((results) => {
- //        resolve(results);
- //      })
- //      .catch((error) => {
- //        reject(error);
- //      });
- //    });
- //  };
+  let postNewContact = (newContact) => {
+    return $q ((resolve, reject) => {
+      $http.post(`${FIREBASE_CONFIG.databaseURL}/contacts.json`, JSON.stringify(newContact))
+      .then((results) => {
+        resolve(results);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+    });
+  };
 
- //  let deletz = (itemId) => {
- //  	return $q((resolve, reject) => {
- //  		$http.delete(`${FIREBASE_CONFIG.databaseURL}/items/${itemId}.json`)
- //  		.then((resultz) => {
- //  			resolve();
- //  		})
- //     .catch((error) => {
- //        reject(error);
- //      });
- //    });
- //  };
+  let remove = (contactId) => {
+  	console.log("contactId", contactId);
+  	return $q((resolve, reject) => {
+  		$http.delete(`${FIREBASE_CONFIG.databaseURL}/contacts/${contactId}.json`)
+  		.then((results) => {
+  	console.log("results", results);
+  			resolve();
+  		})
+     .catch((error) => {
+        reject(error);
+      });
+    });
+  };
 
-	// let editItem = (item) => {
-	// 	return $q((resolve, reject) => {
-	// 		$http.put(`${FIREBASE_CONFIG.databaseURL}/items/${item.id}.json`, JSON.stringify({
-	// 			assignedTo: item.assignedTo,
-	// 			isCompleted: item.isCompleted,
-	// 			task: item.task
-	// 		})
-	// 		).then((resultz) => {
-	// 			resolve(resultz);
- //  		})
-	//      .catch((error) => {
-	//         reject(error);
-	//       });
- //    });
- //  };
+	let editContact = (contact) => {
+		return $q((resolve, reject) => {
+			$http.put(`${FIREBASE_CONFIG.databaseURL}/contacts/${contact.id}.json`, JSON.stringify({
+				name: contact.name,
+				address: contact.address,
+				city: contact.city,
+				phone: contact.phone,
+				job: contact.job
+			})
+			).then((resultz) => {
+				resolve(resultz);
+  		})
+	     .catch((error) => {
+	        reject(error);
+	      });
+    });
+  };
 
 
-	  return {getContactList:getContactList};
-      // , getSingleItem: getSingleItem, postNewItem: postNewItem, deletz: deletz, editItem: editItem};
+	  return {editContact:editContact, getContactList:getContactList, getSingleContact: getSingleContact, postNewContact: postNewContact, remove: remove};
+      // , getSingleContact: getSingleItem, postNewItem: postNewItem, deletz: deletz, editItem: editItem};
 
 
 
