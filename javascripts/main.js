@@ -1,28 +1,40 @@
-var app = angular.module("AddressBook", []);
+app.controller ("ContactCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
+	$scope.showContactView = true;
+	$scope.contacts = [];
+	
 
-app.controller ("ContactInfo", ($scope) => {
 
-	$scope.contacts = [
-		{
-			name: "Terry Moore",
-			phone: "615-555-7771",
-			job: "Artist",
-		},
-		{
-			name: "Jonathan Coulton",
-			phone: "615-555-9292",
-			job: "Singer",
-		},
-		{
-			name: "Steve Womack",
-			phone: "615-555-5872",
-			job: "Writer",
-		},
-		{
-			name: "Stephen Lackey",
-			phone: "615-555-4444",
-			job: "Director",
-		},
-	];
+
+	let getContactList = () => {
+		let info = [];
+		return $q((resolve, reject) => {
+			$http.get(`${FIREBASE_CONFIG.databaseURL}/contacts.json`)
+			.then((fbItems) => {
+				var contactCollection = fbItems.data;
+				Object.keys(contactCollection).forEach((key) => {
+					contactCollection[key].id=key;
+					console.log("id", contactCollection[key].id);
+					info.push(contactCollection[key]);
+				});
+				resolve(info);
+			})
+			.catch((error) => {
+				reject(error);
+			});
+		});
+	};
+
+	let getContacts = () => {
+		getContactList().then((info) => {
+			$scope.contacts = info;
+			console.log("scope contacts", $scope.contacts);
+		}).catch((error) => {
+			console.log("get error", error);
+		});
+	};
+
+	getContacts();
+
+
 });
 

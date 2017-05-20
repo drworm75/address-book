@@ -1,0 +1,2 @@
+app.controller("ContactItemCtrl", function()  {
+});

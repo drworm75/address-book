@@ -1,0 +1,27 @@
+<input type="text" name="" placeholder="Search for ......" ng-model="searchText">
+
+
+<div ng-repeat="contact in contacts | filter: searchText" >
+		<div class="panel panel-success col-sm-4">
+		<div class="panel-heading">
+			<h3>{{contact.name}}
+			<button class="btn btn-sm btn-info" ng-click="contactChange(contact.id)"><a ng-href="#!/contacts/edit/{{contact.id}}"><i class=" fa fa-pencil"></i></a></button>
+			<button class="btn btn-sm btn-danger" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button></h3>
+		</div>
+		<ul class="list-group">
+			<li class="list-group-item">{{contact.address}}</li>
+		</ul>
+		<ul class="list-group list-inline">
+			<li class="city-group list-group-item">{{contact.city}}</li>
+			<li class="city-group list-group-item">{{contact.state}}</li>
+			<li class="city-group list-group-item">{{contact.zip}}</li>
+		</ul>		
+
+		<ul class="list-group">
+			<li class="list-group-item">{{contact.phone}}</li>
+		</ul>
+		<ul class="list-group">
+			<li class="list-group-item">{{contact.job}}</li>
+		</ul>
+</div>	
+</div>
