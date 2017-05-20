@@ -4,9 +4,17 @@
 <div ng-repeat="contact in contacts | filter: searchText" >
 		<div class="panel panel-success col-sm-4">
 		<div class="panel-heading">
-			<h3>{{contact.name}}
-			<button class="btn btn-sm btn-info" ng-click="contactChange(contact.id)"><a ng-href="#!/contacts/edit/{{contact.id}}"><i class=" fa fa-pencil"></i></a></button>
-			<button class="btn btn-sm btn-danger" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button></h3>
+			<h3 ng-show="!editing">
+			{{contact.name}}
+			<!-- <a ng-href="#!/contacts/edit/{{contact.id}}"> -->
+				<button class="btn btn-sm btn-info" ng-click="editing = !editing"><i class=" fa fa-pencil"></i></button>
+				<!-- ng-click="contactChange(contact.id)" -->
+			</h3>
+			<h3 ng-show="editing">
+				{{contact.name}}
+				<button class="btn btn-sm btn-success" ng-click="editing = false"><i class=" fa fa-save"></i></button>
+				<button class="btn btn-sm btn-danger" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button>
+			</h3>
 		</div>
 		<ul class="list-group">
 			<li class="list-group-item">{{contact.address}}</li>
