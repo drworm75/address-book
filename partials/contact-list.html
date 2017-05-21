@@ -7,11 +7,11 @@
 			<h3 ng-show="!editing">
 			{{contact.name}}
 			<!-- <a ng-href="#!/contacts/edit/{{contact.id}}"> -->
-				<button class="btn btn-sm btn-info" ng-click="editing = !editing"><i class=" fa fa-pencil"></i></button>
+				<button class="btn btn-sm btn-info" ng-click="editing = !editing; contactChange(contact.id)"><i class=" fa fa-pencil"></i></button>
 				<!-- ng-click="contactChange(contact.id)" -->
 			</h3>
-			<h3 ng-show="editing"><input ng-model="contact.name" type="text">
-				<button class="btn btn-sm btn-success" ng-click="editing = false"><i class=" fa fa-save"></i></button>
+			<h3 ng-show="editing"><input ng-model="newContact.name" type="text">
+				<button class="btn btn-sm btn-success" ng-click="editing = false; addNewContact()"><i class=" fa fa-save"></i></button>
 				<button class="btn btn-sm btn-danger" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button>
 			</h3>
 		</div>
@@ -32,38 +32,21 @@
 				<li class="list-group-item">{{contact.job}}</li>
 			</ul>
 		</div>
-		<div ng-show="!editing">
-			<ul class="list-group">
-				<li class="list-group-item">{{contact.address}}</li>
-			</ul>
-			<ul class="list-group list-inline">
-				<li class="city-group list-group-item">{{contact.city}}</li>
-				<li class="city-group list-group-item">{{contact.state}}</li>
-				<li class="city-group list-group-item">{{contact.zip}}</li>
-			</ul>		
-
-			<ul class="list-group">
-				<li class="list-group-item">{{contact.phone}}</li>
-			</ul>
-			<ul class="list-group">
-				<li class="list-group-item">{{contact.job}}</li>
-			</ul>
-		</div>
 		<div ng-show="editing">
 			<ul class="list-group">
-				<li class="list-group-item"><input ng-model="contact.address" type="text"></li>
+				<li class="list-group-item"><input ng-model="newContact.address" type="text"></li>
 			</ul>
 			<ul class="list-group list-inline">
-				<li class="city-group list-group-item"><input ng-model="contact.city" type="text"></li>
-				<li class="city-group list-group-item"><input ng-model="contact.state" type="text"></li>
-				<li class="city-group list-group-item"><input ng-model="contact.zip" type="text"></li>
+				<li class="city-group list-group-item"><input ng-model="newContact.city" type="text"></li>
+				<li class="city-group list-group-item"><input ng-model="newContact.state" type="text"></li>
+				<li class="city-group list-group-item"><input ng-model="newContact.zip" type="text"></li>
 			</ul>		
 
 			<ul class="list-group">
-				<li class="list-group-item"><input ng-model="contact.phone" type="text"></li>
+				<li class="list-group-item"><input ng-model="newContact.phone" type="text"></li>
 			</ul>
 			<ul class="list-group">
-				<li class="list-group-item"><input ng-model="contact.job" type="text"></li>
+				<li class="list-group-item"><input ng-model="newContact.job" type="text"></li>
 			</ul>
 		</div>
 </div>	

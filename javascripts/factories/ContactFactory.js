@@ -62,15 +62,19 @@ app.factory("ContactFactory", function($http, $q, FIREBASE_CONFIG) {
   };
 
 	let editContact = (contact) => {
-		return $q((resolve, reject) => {
-			$http.put(`${FIREBASE_CONFIG.databaseURL}/contacts/${contact.id}.json`, JSON.stringify({
-				name: contact.name,
-				address: contact.address,
-				city: contact.city,
-				phone: contact.phone,
-				job: contact.job
-			})
-			).then((resultz) => {
+    console.log("contact in ItemFactory", contact);
+    return $q((resolve, reject) => {
+      $http.put(`${FIREBASE_CONFIG.databaseURL}/contacts/${contact.id}.json`, JSON.stringify({
+        name: contact.name,
+        address: contact.address,
+        city: contact.city,
+        state: contact.state,
+        zip: contact.zip,
+        phone: contact.phone,
+        job: contact.job
+      })
+      ).then((resultz) => {
+      console.log("editContact factory after return... resultz", resultz);
 				resolve(resultz);
   		})
 	     .catch((error) => {

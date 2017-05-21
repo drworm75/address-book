@@ -1,5 +1,6 @@
-app.controller("ContactListCtrl", function($scope, ContactFactory)  { 
+app.controller("ContactListCtrl", function($location, $scope, ContactFactory)  { 
 	$scope.contacts = [];  
+	$scope.newContact = {};
 		let getContacts = () => {	
 		ContactFactory.getContactList().then((itemz) => {
 			$scope.contacts = itemz;
@@ -23,10 +24,20 @@ app.controller("ContactListCtrl", function($scope, ContactFactory)  {
 	};
 
 	$scope.contactChange = (contact) => {
-		console.log("contactChange & contact", contact);
-		ContactFactory.editContact(contact).then(() => {
-		}).catch((errror) => {
-			console.log("contactChange", error);
+		ContactFactory.getSingleContact(contact).then((results) => {
+			$scope.newContact = results.data;
+			console.log("results.data", $scope.newContact);
+		}).catch((error) => {
+			console.log("getSingleItem", error);
 		});
 	};
+
+  $scope.addNewContact = () => {
+  	console.log($scope.newContact);
+  	ContactFactory.editContact($scope.newContact).then(() => {
+  		$location.url('/items/list');
+  	}).catch((error) => {
+  		console.log("editItem", error);
+  	});
+  };
 });
