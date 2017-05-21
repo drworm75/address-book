@@ -4,24 +4,50 @@
 <div ng-repeat="contact in contacts | filter: searchText" >
 		<div class="panel panel-success col-sm-4">
 		<div class="panel-heading">
-			<h3>{{contact.name}}
-			<button class="btn btn-sm btn-info" ng-click="contactChange(contact.id)"><a ng-href="#!/contacts/edit/{{contact.id}}"><i class=" fa fa-pencil"></i></a></button>
-			<button class="btn btn-sm btn-danger" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button></h3>
+			<h3 ng-show="!editing">
+			{{contact.name}}
+			<!-- <a ng-href="#!/contacts/edit/{{contact.id}}"> -->
+				<button class="btn btn-sm btn-info" ng-click="editing = !editing; contactChange(contact.id)"><i class=" fa fa-pencil"></i></button>
+				<!-- ng-click="contactChange(contact.id)" -->
+			</h3>
+			<h3 ng-show="editing"><input ng-model="newContact.name" type="text">
+				<button class="btn btn-sm btn-success" ng-click="editing = false; addNewContact()"><i class=" fa fa-save"></i></button>
+				<button class="btn btn-sm btn-danger" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button>
+			</h3>
 		</div>
-		<ul class="list-group">
-			<li class="list-group-item">{{contact.address}}</li>
-		</ul>
-		<ul class="list-group list-inline">
-			<li class="city-group list-group-item">{{contact.city}}</li>
-			<li class="city-group list-group-item">{{contact.state}}</li>
-			<li class="city-group list-group-item">{{contact.zip}}</li>
-		</ul>		
+		<div ng-show="!editing">
+			<ul class="list-group">
+				<li class="list-group-item">{{contact.address}}</li>
+			</ul>
+			<ul class="list-group list-inline">
+				<li class="city-group list-group-item">{{contact.city}}</li>
+				<li class="city-group list-group-item">{{contact.state}}</li>
+				<li class="city-group list-group-item">{{contact.zip}}</li>
+			</ul>		
 
-		<ul class="list-group">
-			<li class="list-group-item">{{contact.phone}}</li>
-		</ul>
-		<ul class="list-group">
-			<li class="list-group-item">{{contact.job}}</li>
-		</ul>
+			<ul class="list-group">
+				<li class="list-group-item">{{contact.phone}}</li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item">{{contact.job}}</li>
+			</ul>
+		</div>
+		<div ng-show="editing">
+			<ul class="list-group">
+				<li class="list-group-item"><input ng-model="newContact.address" type="text"></li>
+			</ul>
+			<ul class="list-group list-inline">
+				<li class="city-group list-group-item"><input ng-model="newContact.city" type="text"></li>
+				<li class="city-group list-group-item"><input ng-model="newContact.state" type="text"></li>
+				<li class="city-group list-group-item"><input ng-model="newContact.zip" type="text"></li>
+			</ul>		
+
+			<ul class="list-group">
+				<li class="list-group-item"><input ng-model="newContact.phone" type="text"></li>
+			</ul>
+			<ul class="list-group">
+				<li class="list-group-item"><input ng-model="newContact.job" type="text"></li>
+			</ul>
+		</div>
 </div>	
 </div>
