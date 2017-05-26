@@ -1,8 +1,11 @@
-app.controller("ContactListCtrl", function($location, $scope, ContactFactory)  { 
+app.controller("ContactListCtrl", function($location, $rootScope, $scope, ContactFactory)  { 
 	$scope.contacts = [];  
 	$scope.newContact = {};
+
 		let getContacts = () => {	
-		ContactFactory.getContactList().then((itemz) => {
+		console.log("Calling getItems");
+		console.log("rootScope", $rootScope);
+		ContactFactory.getContactList($rootScope.user.uid).then((itemz) => {
 			$scope.contacts = itemz;
 			console.log($scope.contacts);
 		}).catch((error) => {

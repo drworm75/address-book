@@ -7,16 +7,18 @@
             "state": "TX",
             "zip": "45632",
             "phone": "615-555-7771",
-            "job": "Artist"
+            "job": "Artist",
+            "uid": "yNR2XvxyBZYVZTFXVJIYcWk45q42"
         },
         "contact1": {
-            "name": "Jonathan Coulton",
-            "address": "3 Paradise Cove",
-            "city": "San Antonio",
+            "name": "JonathanCoulton",
+            "address": "3ParadiseCove",
+            "city": "SanAntonio",
             "state": "TX",
             "zip": "45632",
             "phone": "615-555-9292",
-            "job": "Singer"
+            "job": "Singer",
+            "uid": "yNR2XvxyBZYVZTFXVJIYcWk45q42"
         },
         "contact2": {
             "name": "Steve Womack",
@@ -25,16 +27,28 @@
             "state": "TX",
             "zip": "45632",
             "phone": "615-555-5872",
-            "job": "Writer"
+            "job": "Writer",
+            "uid": "9RjcnlMSZwSIdbnsQf6FFvgpeDl1"
         },
         "contact3": {
-            "name": "Stephen Lackey",
-            "address": "3 Paradise Cove",
-            "city": "San Antonio",
+            "name": "StephenLackey",
+            "address": "3ParadiseCove",
+            "city": "SanAntonio",
             "state": "TX",
             "zip": "45632",
             "phone": "615-555-4444",
-            "job": "Director"
+            "job": "Director",
+            "uid": "9RjcnlMSZwSIdbnsQf6FFvgpeDl1"
+        }
+    },
+    "users": {
+        "user0": {
+            "uid": "yNR2XvxyBZYVZTFXVJIYcWk45q42",
+            "username": "a"
+        },
+        "user1": {
+            "uid": "9RjcnlMSZwSIdbnsQf6FFvgpeDl1",
+            "username": "d"
         }
     }
 }

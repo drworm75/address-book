@@ -4,8 +4,9 @@ app.controller("NavCtrl", ($scope) => {
 		console.log("Button Clicked-linkName =", linkName);
 		if (linkName === "New Contact") {
 			window.location = "#!/contacts/new";
-		}
-		else {
+		} else if (linkName === "Logout") {
+			window.location = "#!/logout";
+		} else {
 			document.location.href = "#!/partials/contact-new.html";
 		}
 	};

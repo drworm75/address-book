@@ -1,12 +1,13 @@
 //Don't forget to return functions that are in the factory!
 app.factory("ContactFactory", function($http, $q, FIREBASE_CONFIG) {
 	
-	let getContactList = () => {
-		console.log("getCpntactList is running");
+	let getContactList = (userId) => {
+		console.log("get ContactList is running");
+    console.log("rootScope in getContactList", userId);
 	    let info = [];
 	    return $q((resolve, reject) => {
-        $http.get(`${FIREBASE_CONFIG.databaseURL}/contacts.json`)
-	      .then((fbItems) => {
+        $http.get(`${FIREBASE_CONFIG.databaseURL}/contacts.json?orderBy="uid"&equalTo="${userId}"`)	      
+        .then((fbItems) => {
 	        let contactCollection = fbItems.data;
 	        // if (itemCollection !== null) {
 		        Object.keys(contactCollection).forEach((key) => {

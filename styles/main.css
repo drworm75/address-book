@@ -1,6 +1,9 @@
 html {
   background-color: #01FF70; }
 
+.panel {
+  height: 300px; }
+
 .panel-heading {
   width: 100%;
   text-align: center; }

@@ -1,7 +1,7 @@
 <input type="text" name="" placeholder="Search for ......" ng-model="searchText">
 
 
-<div ng-repeat="contact in contacts | filter: searchText" >
+<div ng-repeat="contact in contacts | filter: searchText | orderBy: 'name'" >
 		<div class="panel panel-success col-sm-4">
 		<div class="panel-heading">
 			<h3 ng-show="!editing">
