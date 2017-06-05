@@ -29,6 +29,7 @@ app.controller("ContactListCtrl", function($location, $rootScope, $scope, Contac
 	$scope.contactChange = (contact) => {
 		ContactFactory.getSingleContact(contact).then((results) => {
 			$scope.newContact = results.data;
+			$location.url('/contacts/list');
 			console.log("results.data", $scope.newContact);
 		}).catch((error) => {
 			console.log("getSingleItem", error);
@@ -38,7 +39,8 @@ app.controller("ContactListCtrl", function($location, $rootScope, $scope, Contac
   $scope.addNewContact = () => {
   	console.log($scope.newContact);
   	ContactFactory.editContact($scope.newContact).then(() => {
-  		$location.url('/items/list');
+  		$location.url('/contacts/list');
+  		getContacts();
   	}).catch((error) => {
   		console.log("editItem", error);
   	});

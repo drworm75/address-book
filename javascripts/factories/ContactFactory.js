@@ -72,7 +72,8 @@ app.factory("ContactFactory", function($http, $q, FIREBASE_CONFIG) {
         state: contact.state,
         zip: contact.zip,
         phone: contact.phone,
-        job: contact.job
+        job: contact.job,
+        uid: contact.uid
       })
       ).then((resultz) => {
       console.log("editContact factory after return... resultz", resultz);

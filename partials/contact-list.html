@@ -4,17 +4,19 @@
 <div ng-repeat="contact in contacts | filter: searchText | orderBy: 'name'" >
 		<div class="panel panel-success col-sm-4">
 		<div class="panel-heading">
+			<!-- Contact Name Not editing -->
 			<h3 ng-show="!editing">
 			{{contact.name}}
-			<!-- <a ng-href="#!/contacts/edit/{{contact.id}}"> -->
-				<button class="btn btn-sm btn-info" ng-click="editing = !editing; contactChange(contact.id)"><i class=" fa fa-pencil"></i></button>
-				<!-- ng-click="contactChange(contact.id)" -->
+				<button class="btn btn-sm btn-info pull-right" ng-click="editing = !editing; contactChange(contact.id)"><i class=" fa fa-pencil"></i></button>
 			</h3>
+			<!-- Contact name Editing -->
 			<h3 ng-show="editing"><input ng-model="newContact.name" type="text">
-				<button class="btn btn-sm btn-success" ng-click="editing = false; addNewContact()"><i class=" fa fa-save"></i></button>
-				<button class="btn btn-sm btn-danger" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button>
+				<button class="btn btn-sm btn-success pull-right" ng-click="editing = false; addNewContact()"><i class=" fa fa-save"></i></button>
+				<button class="btn btn-sm btn-danger btn-pad-right pull-right" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button>
 			</h3>
 		</div>
+
+		<!-- Contact info not editing -->
 		<div ng-show="!editing">
 			<ul class="list-group">
 				<li class="list-group-item">{{contact.address}}</li>
@@ -32,14 +34,15 @@
 				<li class="list-group-item">{{contact.job}}</li>
 			</ul>
 		</div>
+		<!-- Contact info Editing -->
 		<div ng-show="editing">
 			<ul class="list-group">
 				<li class="list-group-item"><input ng-model="newContact.address" type="text"></li>
 			</ul>
 			<ul class="list-group list-inline">
 				<li class="city-group list-group-item"><input ng-model="newContact.city" type="text"></li>
-				<li class="city-group list-group-item"><input ng-model="newContact.state" type="text"></li>
-				<li class="city-group list-group-item"><input ng-model="newContact.zip" type="text"></li>
+				<li class="city-group list-group-item"><input class="small-input" ng-model="newContact.state" type="text"></li>
+				<li class="city-group list-group-item"><input class="small-input" ng-model="newContact.zip" type="text"></li>
 			</ul>		
 
 			<ul class="list-group">
