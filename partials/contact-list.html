@@ -11,8 +11,8 @@
 			</h3>
 			<!-- Contact name Editing -->
 			<h3 ng-show="editing"><input ng-model="newContact.name" type="text">
-				<button class="btn btn-sm btn-success pull-right" ng-click="editing = false; addNewContact()"><i class=" fa fa-save"></i></button>
-				<button class="btn btn-sm btn-danger btn-pad-right pull-right" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button>
+				<button class="btn btn-sm btn-danger pull-right" ng-click="deleteContact(contact.id)"><i class=" fa fa-trash"></i></button>
+				<button class="btn btn-sm btn-success btn-pad-right pull-right" ng-click="editing = false; addNewContact()"><i class=" fa fa-save"></i></button>
 			</h3>
 		</div>
 
